@@ -14,9 +14,9 @@ import React, { useState } from "react";
 export function FilterDrawer({ categories = [], onApply }) {
   const [selected, setSelected] = useState("");
 
-  console.log(selected);
-
+  //esto es especifico de chakraui, no va en otras librerías
   const categorieSelection = createListCollection({ items: categories });
+  
   return (
     <Drawer.Root placement="right">
       <Drawer.Trigger asChild>

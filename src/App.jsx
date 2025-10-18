@@ -1,12 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./components/pagesComponents/Layout";
 import Home from "./Pages/Home/Home";
+import AddProducts from "./Pages/AddProducts/AddProducts";
 
 function App() {
   return (
-    <Layout title="Inventario" subtitle="Lista de productos disponibles">
-      <Home />
-    </Layout>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/addProducts" element={<AddProducts />} />
+      </Route>
+    </Routes>
   );
 }
 
