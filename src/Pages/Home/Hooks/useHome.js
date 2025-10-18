@@ -14,10 +14,12 @@ export const useHome = () => {
   }, [cat]);
 
   useEffect(() => {
-    const cat = products?.map((prod) => {
-      return prod.categoria;
-    });
-    setCategories(cat);
+    if (products) {
+      const uniqueCategories = [
+        ...new Set(products.map((prod) => prod.categoria)),
+      ];
+      setCategories(uniqueCategories);
+    }
   }, [products]);
 
   return { cat, setCat, categories, products, loading };
