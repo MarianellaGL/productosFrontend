@@ -1,4 +1,5 @@
-
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const AUTH = import.meta.env.VITE_AUTH;
 
 export const UpdateProduct = async (body, id) => {
   try {
