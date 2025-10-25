@@ -1,16 +1,100 @@
-# React + Vite
+# 🧾 Inventario App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Inventario App es una aplicación web desarrollada en React + Chakra UI v3, creada para administrar productos dentro de un inventario de forma moderna, responsiva y fácil de usar.
 
-Currently, two official plugins are available:
+Permite listar, filtrar, agregar, editar y eliminar productos con una interfaz clara basada en componentes reutilizables.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características principales
 
-## React Compiler
+- 📦 Listado dinámico de productos con categorías y filtros.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 💡 Drawer de detalle (modal en desktop / navegación en mobile).
 
-## Expanding the ESLint configuration
+- ✏️ Edición de productos con formulario modal.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ❌ Eliminación dinámica por ID o nombre, con confirmación.
+
+- 📱 Diseño 100% responsivo (tabla en desktop, cards en mobile).
+
+- 🧠 Contextos globales y reducers para manejo de estado.
+
+- 🧩 Arquitectura limpia con separación de responsabilidades.
+
+
+    🔗 Estructura preparada para conectar con una API real.
+
+🧩 Tecnologías utilizadas
+
+- Tipo Tecnología
+- Framework React 18 + Vite
+- UI Library Chakra UI v3 (Ark + Radix)
+- Routing React Router DOM v6
+- Estado Global React Context + useReducer
+- Iconografía Lucide React / React Icons
+- Formateo de datos Intl.NumberFormat (ARS)
+
+`src/`  
+`├── components/` \
+`│   ├── Layout.jsx` \
+`│   ├── NavButton.jsx`\
+`│   ├── ProductsTable.jsx`\
+`│   ├── ProductsTableDesktop.jsx`\
+`│   ├── ProductsTableMobile.jsx` \
+`│   ├── EditProductModal.jsx` \
+`│   ├── FilterDrawer.jsx` \
+`│   └── ProductDetailDrawer.jsx` \
+`│` \
+`├── context/` \
+`    ├── reducers/` \
+`│          ├── productsReducer.js`\
+`│          └── detailReducer.js` \
+`│   ├── ProductsContext.jsx` \
+`│   └── ProductDetailContext.jsx` \
+`│` \
+`├── hooks/` \
+`│   ├── useHome.js` \
+`│   └── UseResponsive.js` \
+`│` \
+`├── pages/` \
+`│   ├── Home/` \
+`│   │   ├── Home.jsx`\
+`│   │   └── Components/`\
+`│   ├── ProductsEditPage.jsx` \
+`│   ├── ProductsDeletePage.jsx` \
+`│   └── AddProductsPage.jsx`\
+`│` \
+`│` \
+`├── Services/` \
+`│   ├── getProductsByCategory.js` \
+`│   ├── productsService.js`\
+`│   └── ...` \
+`│` \
+`└── App.jsx`\
+
+### Cómo correr el proyecto
+
+- Clonar el repositorio \
+  `git clone <repo-url> `
+
+- Instalar dependencias \
+  `npm install`
+
+- Correr el proyecto \
+  `npm run dev`
+
+## RUTAS PRINCIPALES
+
+| Ruta             |              Descripción              |
+| :--------------- | :-----------------------------------: |
+| '/'              | Página principal con listado y filtro |
+| '/addProducts'   |       Alta de nuevos productos        |
+| /products/edit   |       Edición con tabla y modal       |
+| /products/delete |         Eliminación dinámica          |
+
+### Buenas Prácticas
+
+- Arquitectura modular con componentes reutilizables.
+- Contextos y reducers desacoplados del UI.
+- Código limpio, semántico y mantenible.
+- Uso completo de APIs nuevas de Chakra UI v3 (Dialog.Root, Drawer.Root, Table.Root).
+- Hooks personalizados (useHome, useResponsiveDetail).
