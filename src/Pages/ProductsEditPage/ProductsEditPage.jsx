@@ -23,6 +23,7 @@ export default function ProductsEditPage() {
 
   const handleSubmit = async (form) => {
     const res = await UpdateProduct(form, productId);
+    console.log(res);
     if (!res?._id) {
       setIsResponseOk(true);
       toaster.create({
