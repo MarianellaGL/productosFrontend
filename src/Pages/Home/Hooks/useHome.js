@@ -1,11 +1,12 @@
+import { useProducts } from "../../../context/ProductContext";
 import { getProductsByCategory } from "../../../Services/getProductsByCategory";
 import { useEffect, useState } from "react";
 
 export const useHome = () => {
   const [cat, setCat] = useState(null);
   const [categories, setCategories] = useState();
+  const { products, setProducts } = useProducts();
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState();
 
   useEffect(() => {
     getProductsByCategory(cat).then((res) => {

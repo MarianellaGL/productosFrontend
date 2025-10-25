@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { AddProductsEndpoint } from "../../../Services/AddProductsEndpoint";
 import { toaster } from "../../../components/ui/toaster";
 import { useRef, useState } from "react";
@@ -15,6 +16,7 @@ export function useAddProductForm() {
   const [categoriaControl, setCategoriaControl] = useState("");
   const [nuevaCategoria, setNuevaCategoria] = useState("");
   const [categorias, setCategorias] = useState(categoriasBase);
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
   const submittedRef = useRef(false);
@@ -150,6 +152,7 @@ export function useAddProductForm() {
     setNuevaCategoria("");
     setErrors({});
     submittedRef.current = false;
+    navigate("/");
   };
 
   return {

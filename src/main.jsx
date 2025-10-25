@@ -5,14 +5,20 @@ import App from "./App.jsx";
 import { Provider } from "./components/ui/provider";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster";
+import { DetailProvider } from "./context/ProductDetailContext";
+import { ProductsProvider } from "./context/ProductContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      <Toaster />
+      <DetailProvider>
+        <ProductsProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+          <Toaster />
+        </ProductsProvider>
+      </DetailProvider>
     </Provider>
   </StrictMode>
 );

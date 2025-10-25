@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -5,81 +6,90 @@ import {
   Flex,
   Heading,
   HStack,
-  Icon,
   Spacer,
   Text,
+  Stack,
 } from "@chakra-ui/react";
-import { Menu } from "lucide-react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { NavButton } from "./NavButton";
 
 export function Layout({
   title = "Inventario",
   subtitle = "Lista de productos",
-  children,
 }) {
   const location = useLocation();
+  const { pathname } = location;
 
   return (
-    <Box bgGradient="linear(to-b, sand.50, sand.100)" minH="100dvh">
+    <Box
+      bgGradient="linear(to-b, sand.50, sand.100)"
+      minH="100dvh"
+      display="flex"
+      flexDir="column"
+    >
       <Box as="header" borderBottomWidth="1px" bg="white">
         <Container maxW="6xl" py={3}>
-          <Flex align="center" gap={3}>
-            <HStack gap={2}>
+          <Stack gap={2}>
+            <Flex align="center" gap={3}>
               <Heading as="h1" size="md" color="brand.700">
-                Inventario
+                {title}
               </Heading>
-            </HStack>
+              <Spacer />
+            </Flex>
 
-            <HStack as="nav" gap={2} ml={6}>
-              <NavButton to="/" active={location.pathname === "/"}>
+            {subtitle && (
+              <Text fontSize="sm" color="sand.700">
+                {subtitle}
+              </Text>
+            )}
+
+            <HStack as="nav" gap={2}>
+              <NavButton to="/" active={pathname === "/"}>
                 Inicio
               </NavButton>
+
+              <NavButton to="/addProducts" active={pathname === "/addProducts"}>
+                Agregar
+              </NavButton>
+
               <NavButton
-                to="/addProducts"
-                active={location.pathname === "/addProducts"}
+                to="/products/edit"
+                active={pathname.startsWith("/products/edit")}
               >
-                Agregar Productos
+                Editar
+              </NavButton>
+
+              <NavButton
+                to="/products/delete"
+                active={pathname.startsWith("/products/delete")}
+              >
+                Eliminar
               </NavButton>
             </HStack>
-            <Spacer />
-          </Flex>
+          </Stack>
         </Container>
       </Box>
 
-      <Container maxW="6xl" py={8}>
+      <Container maxW="6xl" py={8} flex="1">
         <Outlet />
       </Container>
 
-      <Box
-        as="footer"
-        mt={12}
-        borderTopWidth="1px"
-        bg="white"
-        style={{
-          maxHeight: "100vh",
-          position: "absolute",
-          bottom: "0",
-          width: "100%",
-        }}
-      >
+      <Box as="footer" borderTopWidth="1px" bg="white">
         <Container maxW="6xl" py={4}>
           <Flex align="center" gap={3}>
             <Text color="sand.700" fontSize="sm">
               © {new Date().getFullYear()} Inventario
             </Text>
             <Spacer />
-            <Text color="sand.700" fontSize="sm">
-              <Button
-                as={NavLink}
-                to="/addProducts"
-                variant="ghost"
-                size="xs"
-                _hover={{ bg: "sand.100" }}
-              >
-                Agregar productos
-              </Button>
-            </Text>
+            <Button
+              as={NavLink}
+              to="/addProducts"
+              variant="ghost"
+              size="xs"
+              _hover={{ bg: "sand.100" }}
+            >
+              Agregar productos
+            </Button>
           </Flex>
         </Container>
       </Box>
