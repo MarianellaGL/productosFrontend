@@ -25,13 +25,13 @@ export default function ProductsEditPage() {
     const res = await UpdateProduct(form, productId);
     console.log(res);
     if (!res?._id) {
-      setIsResponseOk(true);
       toaster.create({
         title: "Error al guardar",
         type: "error",
       });
     }
     if (res?._id) {
+      setIsResponseOk(true);
       toaster.create({
         title: "Producto modificado exitosamente!",
         type: "success",
