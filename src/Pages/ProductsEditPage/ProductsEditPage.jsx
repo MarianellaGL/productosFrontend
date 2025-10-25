@@ -10,6 +10,7 @@ import { getProductsByCategory } from "../../Services/getProductsByCategory";
 export default function ProductsEditPage() {
   const { products, setProducts, updateProduct } = useProducts();
   const [editing, setEditing] = useState(null);
+  const [isResponseOk, setIsResponseOk] = useState(false);
   const [productId, setProductId] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -23,6 +24,7 @@ export default function ProductsEditPage() {
   const handleSubmit = async (form) => {
     const res = await UpdateProduct(form, productId);
     if (!res?._id) {
+      setIsResponseOk(true);
       toaster.create({
         title: "Error al guardar",
         type: "error",
@@ -36,13 +38,14 @@ export default function ProductsEditPage() {
     }
     updateProduct({ id: res._id, patch: res });
     onClose();
+    setIsResponseOk(false);
   };
 
   useEffect(() => {
     getProductsByCategory().then((res) => {
       setProducts(res);
     });
-  }, [products]);
+  }, [isResponseOk]);
 
   const rows = products || [];
 
