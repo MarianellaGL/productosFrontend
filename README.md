@@ -45,7 +45,7 @@ Permite listar, filtrar, agregar, editar y eliminar productos con una interfaz c
 `│   └── ProductDetailDrawer.jsx` \
 `│` \
 `├── context/` \
-`    ├── reducers/` \
+`│    ├── reducers/` \
 `│          ├── productsReducer.js`\
 `│          └── detailReducer.js` \
 `│   ├── ProductsContext.jsx` \
@@ -98,3 +98,11 @@ Permite listar, filtrar, agregar, editar y eliminar productos con una interfaz c
 - Código limpio, semántico y mantenible.
 - Uso completo de APIs nuevas de Chakra UI v3 (Dialog.Root, Drawer.Root, Table.Root).
 - Hooks personalizados (useHome, useResponsiveDetail).
+
+## Home Desktop
+<img width="1260" height="904" alt="image" src="https://github.com/user-attachments/assets/bacf8bdb-8c64-4727-8740-c63b27ad128a" />
+
+## Home Mobile
+<img width="357" height="728" alt="image" src="https://github.com/user-attachments/assets/1dc9fd32-3fa6-40c9-959e-ba9e2983a4f6" />
+
+
