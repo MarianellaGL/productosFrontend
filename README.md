@@ -20,8 +20,7 @@ Permite listar, filtrar, agregar, editar y eliminar productos con una interfaz c
 
 - 🧩 Arquitectura limpia con separación de responsabilidades.
 
-
-    🔗 Estructura preparada para conectar con una API real.
+-  🔗 Estructura preparada para conectar con una API real.
 
 🧩 Tecnologías utilizadas
 
