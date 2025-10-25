@@ -20,6 +20,7 @@ export default function ProductsDeletePage() {
   const [query, setQuery] = useState("");
   const [toDelete, setToDelete] = useState(null);
   const [open, setOpen] = useState(false);
+  const [isResponseOk, setIsResponseOk] = useState(false);
 
   //para no usar useMemo, podemos usar un efecto secundario que escuche el onChange
   // del input del buscador y me retorne los valores buscados o puedo hacerlo
@@ -48,19 +49,21 @@ export default function ProductsDeletePage() {
       });
     }
     if (res?.message === "Producto eliminado") {
+      setIsResponseOk(true);
       toaster.create({
         title: "Producto eliminado exitosamente!",
         type: "success",
       });
     }
     setOpen(false);
+    setIsResponseOk(false);
   };
 
   useEffect(() => {
     getProductsByCategory().then((res) => {
       setProducts(res);
     });
-  }, [products]);
+  }, [isResponseOk]);
 
   return (
     <Container maxW="container.xl" py={6}>
